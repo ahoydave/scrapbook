@@ -1,0 +1,9 @@
+{
+  "name": "crapbook-admin",
+  "version": "1.0.0",
+  "description": "Admin scripts for Crapbook",
+  "main": "create-user.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.1"
+  }
+}

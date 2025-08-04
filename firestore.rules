@@ -1,0 +1,77 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Users can read and write their own user document
+    match /users/{userId} {
+      allow read, update: if request.auth.uid == userId;
+    }
+
+    // Allow authenticated users to read other users' public information
+    match /users/{userId} {
+      allow get: if request.auth != null;
+    }
+
+    // Friends subcollection
+    match /users/{userId}/friends/{friendId} {
+      // Allow users to manage their own friends list
+      allow read, write, delete: if request.auth.uid == userId;
+      // Allow the other user to see the friend request
+      allow read: if request.auth.uid == friendId;
+    }
+
+    // Posts
+    match /posts/{postId} {
+      // Allow users to create posts
+      allow create: if request.auth.uid == request.resource.data.authorId;
+
+      // Allow users to read posts from their friends or their own posts
+      allow read: if request.auth.uid == resource.data.authorId || exists(/databases/$(database)/documents/users/$(request.auth.uid)/friends/$(resource.data.authorId));
+
+      // Allow post author to update or delete their post
+      allow update, delete: if request.auth.uid == resource.data.authorId;
+    }
+
+    // Comments
+    match /posts/{postId}/comments/{commentId} {
+        // Allow authenticated users to create comments on posts they can view
+        allow create: if request.auth.uid == request.resource.data.authorId && exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow users who can see the post to also see the comments
+        allow read: if exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow comment author to update or delete their comment
+        allow update, delete: if request.auth.uid == resource.data.authorId;
+    }
+
+    // Reactions to posts
+    match /posts/{postId}/reactions/{reactionId} {
+        // Allow authenticated users to react to posts they can view
+        allow create: if request.auth.uid == request.resource.data.authorId && exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow users who can see the post to also see the reactions
+        allow read: if exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow reaction author to delete their reaction
+        allow delete: if request.auth.uid == resource.data.authorId;
+    }
+
+    // Reactions to comments
+    match /posts/{postId}/comments/{commentId}/reactions/{reactionId} {
+        // Allow authenticated users to react to comments on posts they can view
+        allow create: if request.auth.uid == request.resource.data.authorId && exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow users who can see the post to also see the comment reactions
+        allow read: if exists(/databases/$(database)/documents/posts/$(postId));
+
+        // Allow reaction author to delete their reaction
+        allow delete: if request.auth.uid == resource.data.authorId;
+    }
+  }
+}
