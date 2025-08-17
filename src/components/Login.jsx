@@ -1,40 +1,50 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    setError(null);
+    
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      
+      console.log('Google auth successful:', user.displayName, user.email);
+      // Firestore operations removed for debugging
+      
+      // Redirect to home page after successful login
+      navigate('/');
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
+    <div className="auth-container">
+      <div className="auth-form">
+        <h2>Welcome to Crapbook</h2>
+        <p>Sign in with your Google account to get started</p>
+        
+        <button 
+          onClick={handleGoogleLogin} 
+          disabled={loading}
+          className="google-btn"
+        >
+          {loading ? 'Signing in...' : 'Sign in with Google'}
+        </button>
+        
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 };
