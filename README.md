@@ -1,12 +1,59 @@
-# React + Vite
+# Scrapbook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, secure social platform for a closed group of users, inspired by the early days of Facebook.
 
-Currently, two official plugins are available:
+## 🚀 Live App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visit the deployed app at: **https://crapbook-42b77.web.app**
 
-## Expanding the ESLint configuration
+## 🛠 Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React with Vite
+- **Authentication**: Firebase Auth (Google Sign-In)
+- **Database**: Firebase Firestore
+- **Hosting**: Firebase Hosting
+- **Routing**: React Router DOM
+- **State Management**: react-firebase-hooks
+
+## ✨ Current Features
+
+- **Google Authentication**: Sign in with your Google account
+- **User Profiles**: Automatic profile creation with Google account info
+- **Responsive Design**: Clean, modern UI inspired by Facebook
+- **Protected Routes**: Authentication-required pages
+- **Profile Display**: Shows user's Google profile photo and information
+
+## 🏃‍♂️ Development
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Firebase CLI
+- Google account for authentication
+
+### Setup
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to Firebase
+firebase deploy
+```
+
+### Firebase Configuration
+The app uses Firebase for authentication and hosting. The Firebase project ID is `crapbook-42b77`.
+
+## 📋 Roadmap
+
+See [PROGRESS.md](./PROGRESS.md) for detailed development progress and upcoming features.
+
+## 🔐 Security
+
+- Google OAuth 2.0 authentication
+- Firestore security rules protect user data
+- Protected routes ensure authenticated access

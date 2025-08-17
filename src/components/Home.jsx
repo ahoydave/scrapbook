@@ -23,7 +23,7 @@ const Home = () => {
       <main className="main-content">
         <div className="welcome-section">
           <h2>Welcome back, {user?.displayName || 'User'}!</h2>
-          <p>This is your Crapbook timeline. Google auth is working!</p>
+          <p>This is your Scrapbook timeline. Google auth is working!</p>
           <p>Firestore integration coming next...</p>
         </div>
         

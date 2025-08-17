@@ -18,7 +18,7 @@ const Header = () => {
     return (
       <header className="header">
         <div className="header-content">
-          <h1>Crapbook</h1>
+          <h1>Scrapbook</h1>
           <div>Loading...</div>
         </div>
       </header>
@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-content">
-        <h1>Crapbook</h1>
+        <h1>Scrapbook</h1>
         {user && (
           <div className="user-info">
             <div className="user-details">
