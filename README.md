@@ -20,10 +20,13 @@ Visit the deployed app at: **https://crapbook-42b77.web.app**
 
 - **Google Authentication**: Sign in with your Google account
 - **User Profiles**: Automatic profile creation with Google account info
-- **Posts & Timeline**: Create and view posts with text, images, and videos
+- **Posts & Timeline**: Create, edit, delete, and view posts with text, images, and videos
+- **Post Management**: Edit your own posts with inline editing and delete with confirmation
+- **Edit Tracking**: Visual "edited" indicators with timestamps for modified posts
 - **Media Uploads**: Upload images (JPEG, PNG, GIF, WebP) and videos (MP4, WebM, MOV)
 - **Real-time Feed**: Live timeline updates with posts from all users
-- **File Management**: Automatic file validation, progress tracking, and storage organization
+- **Comment System**: Comment on any post with real-time updates, delete your own comments, and Facebook-inspired UI
+- **File Management**: Automatic file validation, progress tracking, and complete storage cleanup
 - **Responsive Design**: Clean, modern UI inspired by Facebook
 - **Protected Routes**: Authentication-required pages
 

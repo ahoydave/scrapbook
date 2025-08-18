@@ -77,12 +77,31 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Real-time Timeline**: Live feed using Firestore listeners with chronological ordering
 *   **Storage Organization**: Structured file storage (`posts/{userId}/{postId}/{filename}`)
 
-### ✅ 7. Code Quality & Structure
+### ✅ 7. Post Management Features
+*   **Edit Posts**: Inline editing for post authors with save/cancel functionality
+*   **Delete Posts**: Secure deletion with confirmation and complete cleanup
+*   **Edit Tracking**: Visual indicators and timestamps for edited posts
+*   **Author Permissions**: Only post authors can edit/delete their own content
+*   **Media Cleanup**: Automatic removal of associated files when posts are deleted
+*   **Graceful Fallbacks**: Profile picture error handling for rate limiting
+
+### ✅ 8. Code Quality & Structure
 *   **CSS Organization**: Separated base styles (`index.css`) from app styles (`App.css`)
 *   **Component Architecture**: Clean separation of concerns between components
 *   **Error Handling**: Proper authentication error handling and user feedback
 *   **Loading States**: Appropriate loading indicators throughout the app
 *   **Responsive Design**: Mobile-friendly post creation and timeline display
+
+### ✅ 9. Comment System Implementation
+*   **Comment Components**: Created CommentForm, CommentList, and Comment components
+*   **Real-time Comments**: Live comment updates using Firestore listeners
+*   **Comment Creation**: Users can comment on any post, including their own
+*   **Comment Management**: Users can delete their own comments with confirmation
+*   **User Integration**: Comments display author name and profile photo with fallbacks
+*   **Data Schema**: Proper Firestore schema linking comments to posts and users
+*   **Security Rules**: Updated Firestore rules to handle comment permissions
+*   **UI Design**: Facebook-inspired comment bubbles with clean, responsive layout
+*   **Index Management**: Firestore composite index for optimized comment queries
 
 ## 5. Current Status
 
@@ -91,8 +110,14 @@ This document outlines the project goals, technology stack, and the progress mad
 - Create text posts with optional media attachments
 - Upload images (JPEG, PNG, GIF, WebP up to 10MB)
 - Upload videos (MP4, WebM, MOV up to 50MB)
+- Edit their own posts with inline editing interface
+- Delete their own posts with confirmation and complete cleanup
 - View real-time timeline with posts from all users
+- See edit history with "edited" timestamps
 - See upload progress and file previews
+- **Comment on posts** from any user, including their own posts
+- **View real-time comments** with live updates as others comment
+- **Delete their own comments** with confirmation dialog
 - Navigate between authenticated pages
 - Sign out properly
 
@@ -108,12 +133,14 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Friend System**: Implement friend requests and management
 *   **Private Timeline**: Show posts only from user and their friends
 *   **User Profiles**: Dedicated profile pages for each user
+*   **Comment Editing**: Allow users to edit their own comments
 
 ### Medium Term (Enhanced Features)
-*   **Comments & Reactions**: Add commenting and emoji reactions to posts
+*   **Emoji Reactions**: Add emoji reactions to posts and comments
 *   **Post Privacy**: Allow users to set post visibility (public/friends only)
 *   **Search & Discovery**: Find and add friends by name or email
 *   **Notifications**: Real-time notifications for friend requests and interactions
+*   **Comment Threads**: Allow replies to comments for nested conversations
 
 ### Long Term (Advanced Features)
 *   **Image Editing**: Basic image filters and cropping tools

@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, deleteDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { ref, deleteObject } from 'firebase/storage';
 import { auth, db, storage } from '../firebase';
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
 
 const Post = ({ post, onPostDeleted }) => {
   const [user] = useAuthState(auth);
@@ -212,6 +214,11 @@ const Post = ({ post, onPostDeleted }) => {
           ) : null}
         </div>
       )}
+
+      <div className="post-comments-section">
+        <CommentList postId={post.id} />
+        <CommentForm postId={post.id} />
+      </div>
     </article>
   );
 };
