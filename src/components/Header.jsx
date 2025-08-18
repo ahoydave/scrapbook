@@ -37,12 +37,18 @@ const Header = () => {
                   src={user.photoURL} 
                   alt="Profile" 
                   className="avatar-image"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
                 />
-              ) : (
-                <div className="avatar-placeholder">
-                  {user.displayName?.charAt(0)?.toUpperCase() || user.email?.charAt(0)?.toUpperCase() || 'U'}
-                </div>
-              )}
+              ) : null}
+              <div 
+                className="avatar-placeholder"
+                style={{ display: user.photoURL ? 'none' : 'flex' }}
+              >
+                {user.displayName?.charAt(0)?.toUpperCase() || user.email?.charAt(0)?.toUpperCase() || 'U'}
+              </div>
               <span className="username">{user.displayName || user.email}</span>
             </div>
             <button onClick={handleLogout} className="logout-btn">

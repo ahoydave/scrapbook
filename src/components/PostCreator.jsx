@@ -143,12 +143,22 @@ const PostCreator = ({ onPostCreated }) => {
     <div className="post-creator">
       <div className="post-creator-header">
         {user?.photoURL ? (
-          <img src={user.photoURL} alt="Your profile" className="post-creator-avatar" />
-        ) : (
-          <div className="post-creator-avatar-placeholder">
-            {user?.displayName?.charAt(0)?.toUpperCase() || 'U'}
-          </div>
-        )}
+          <img 
+            src={user.photoURL} 
+            alt="Your profile" 
+            className="post-creator-avatar"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'flex';
+            }}
+          />
+        ) : null}
+        <div 
+          className="post-creator-avatar-placeholder"
+          style={{ display: user?.photoURL ? 'none' : 'flex' }}
+        >
+          {user?.displayName?.charAt(0)?.toUpperCase() || 'U'}
+        </div>
         <span className="post-creator-name">{user?.displayName || 'You'}</span>
       </div>
 

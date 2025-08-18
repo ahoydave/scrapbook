@@ -48,7 +48,14 @@ const PostList = ({ refreshTrigger }) => {
   return (
     <div className="post-list">
       {posts.map(post => (
-        <Post key={post.id} post={post} />
+        <Post 
+          key={post.id} 
+          post={post} 
+          onPostDeleted={(postId) => {
+            // The real-time listener will automatically update the list
+            console.log('Post deleted:', postId);
+          }}
+        />
       ))}
     </div>
   );
