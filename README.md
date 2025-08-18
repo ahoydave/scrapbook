@@ -11,6 +11,7 @@ Visit the deployed app at: **https://crapbook-42b77.web.app**
 - **Frontend**: React with Vite
 - **Authentication**: Firebase Auth (Google Sign-In)
 - **Database**: Firebase Firestore
+- **Storage**: Firebase Storage (images and videos)
 - **Hosting**: Firebase Hosting
 - **Routing**: React Router DOM
 - **State Management**: react-firebase-hooks
@@ -19,9 +20,12 @@ Visit the deployed app at: **https://crapbook-42b77.web.app**
 
 - **Google Authentication**: Sign in with your Google account
 - **User Profiles**: Automatic profile creation with Google account info
+- **Posts & Timeline**: Create and view posts with text, images, and videos
+- **Media Uploads**: Upload images (JPEG, PNG, GIF, WebP) and videos (MP4, WebM, MOV)
+- **Real-time Feed**: Live timeline updates with posts from all users
+- **File Management**: Automatic file validation, progress tracking, and storage organization
 - **Responsive Design**: Clean, modern UI inspired by Facebook
 - **Protected Routes**: Authentication-required pages
-- **Profile Display**: Shows user's Google profile photo and information
 
 ## 🏃‍♂️ Development
 
@@ -56,4 +60,6 @@ See [PROGRESS.md](./PROGRESS.md) for detailed development progress and upcoming 
 
 - Google OAuth 2.0 authentication
 - Firestore security rules protect user data
+- Firebase Storage rules restrict file uploads to authenticated users
 - Protected routes ensure authenticated access
+- File type and size validation for uploads

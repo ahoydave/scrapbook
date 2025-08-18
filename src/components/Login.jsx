@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-form">
-        <h2>Welcome to Crapbook</h2>
+        <h2>Welcome to Scrapbook</h2>
         <p>Sign in with your Google account to get started</p>
         
         <button 

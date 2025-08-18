@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import Header from './Header';
+import PostCreator from './PostCreator';
+import PostList from './PostList';
 
 const Home = () => {
   const [user, loading] = useAuthState(auth);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handlePostCreated = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
 
   if (loading) {
     return (
@@ -21,30 +28,9 @@ const Home = () => {
     <div>
       <Header />
       <main className="main-content">
-        <div className="welcome-section">
-          <h2>Welcome back, {user?.displayName || 'User'}!</h2>
-          <p>This is your Scrapbook timeline. Google auth is working!</p>
-          <p>Firestore integration coming next...</p>
-        </div>
+        <PostCreator onPostCreated={handlePostCreated} />
         
-        <div className="user-profile-preview">
-          {user?.photoURL ? (
-            <img 
-              src={user.photoURL} 
-              alt="Profile" 
-              className="avatar-large-image"
-            />
-          ) : (
-            <div className="avatar-large">
-              {user?.displayName?.charAt(0)?.toUpperCase() || user?.email?.charAt(0)?.toUpperCase() || 'U'}
-            </div>
-          )}
-          <div className="user-info-details">
-            <h3>{user?.displayName}</h3>
-            <p>{user?.email}</p>
-            <p>Authenticated via Google</p>
-          </div>
-        </div>
+        <PostList refreshTrigger={refreshTrigger} />
       </main>
     </div>
   );

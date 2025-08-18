@@ -16,7 +16,7 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Backend:** Firebase
     *   **Authentication:** For user login and session management.
     *   **Firestore:** As the NoSQL database for storing user data, posts, comments, etc.
-    *   **Storage:** For hosting user-uploaded images.
+    *   **Storage:** For hosting user-uploaded images and videos.
 *   **Routing:** `react-router-dom`
 *   **State Management:** `react-firebase-hooks` for simplified Firebase state management in React components.
 
@@ -27,13 +27,14 @@ This document outlines the project goals, technology stack, and the progress mad
     *   **Automatic Profile Creation:** User profiles are created automatically from Google account information.
     *   **Friend Requests:** (Planned) Friendships are mutual and require a request and acceptance.
     *   **Admin User Creation:** A command-line script exists for an administrator to create the initial users.
-*   **Timeline & Content:** (Planned)
-    *   **Posts:** Users can create text posts with an optional image.
-    *   **Timeline:** A central feed displaying posts from the user and their friends in chronological order.
-    *   **User Profile:** A dedicated page to view a single friend's posts.
-    *   **Comments & Reactions:** Users can comment and add emoji reactions to posts and comments.
+*   **Timeline & Content:**
+    *   **Posts:** Users can create text posts with optional images or videos.
+    *   **Timeline:** A central feed displaying posts from all users in chronological order.
+    *   **Media Support:** Images (JPEG, PNG, GIF, WebP) and videos (MP4, WebM, MOV) with file validation.
+    *   **User Profile:** (Planned) A dedicated page to view a single friend's posts.
+    *   **Comments & Reactions:** (Planned) Users can comment and add emoji reactions to posts and comments.
 
-## 4. Progress Summary (Updated January 2025)
+## 4. Progress Summary (Updated August 2025)
 
 ### ✅ 1. Project Setup & Configuration
 *   Initialized a React + Vite project.
@@ -68,40 +69,68 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Firebase Hosting**: Successfully deployed to https://crapbook-42b77.web.app
 *   **Production Build**: Optimized Vite build with proper routing configuration
 
-### ✅ 6. Code Quality & Structure
+### ✅ 6. Posts & Media System
+*   **PostCreator Component**: Form for creating posts with text, images, and videos
+*   **File Upload System**: Firebase Storage integration with progress tracking
+*   **Media Validation**: File type and size validation (10MB images, 50MB videos)
+*   **Post Display**: Individual post components with media rendering
+*   **Real-time Timeline**: Live feed using Firestore listeners with chronological ordering
+*   **Storage Organization**: Structured file storage (`posts/{userId}/{postId}/{filename}`)
+
+### ✅ 7. Code Quality & Structure
 *   **CSS Organization**: Separated base styles (`index.css`) from app styles (`App.css`)
 *   **Component Architecture**: Clean separation of concerns between components
 *   **Error Handling**: Proper authentication error handling and user feedback
 *   **Loading States**: Appropriate loading indicators throughout the app
+*   **Responsive Design**: Mobile-friendly post creation and timeline display
 
 ## 5. Current Status
 
-**🟢 WORKING**: The app is fully functional with Google authentication and basic user display. Users can:
+**🟢 FULLY FUNCTIONAL**: The app is a complete social posting platform. Users can:
 - Sign in with Google accounts
-- View their profile information and photos
+- Create text posts with optional media attachments
+- Upload images (JPEG, PNG, GIF, WebP up to 10MB)
+- Upload videos (MP4, WebM, MOV up to 50MB)
+- View real-time timeline with posts from all users
+- See upload progress and file previews
 - Navigate between authenticated pages
 - Sign out properly
 
-**🔴 KNOWN ISSUES**:
-- Firestore integration has connectivity issues (400 Bad Request errors)
-- Currently using permissive Firestore rules for debugging
-- Storage rules configured but Firebase Storage not yet set up
+**🟡 MINOR CONSIDERATIONS**:
+- Using permissive Firestore rules (allow all authenticated users)
+- Storage rules allow all authenticated users (appropriate for closed group)
+- Timeline shows posts from all users (no friend system yet)
 
 ## 6. Next Steps
 
-### Immediate (Fix Current Issues)
-*   **Resolve Firestore connectivity** issues causing 400 Bad Request errors
-*   **Restore proper security rules** once Firestore is working
-*   **Set up Firebase Storage** for future image upload functionality
-
-### Short Term (Core Features)
+### Short Term (Social Features)
 *   **User Profile Storage**: Save user profiles to Firestore on first login
 *   **Friend System**: Implement friend requests and management
-*   **Posts Creation**: Allow users to create text posts
-*   **Timeline Display**: Show posts from user and friends
+*   **Private Timeline**: Show posts only from user and their friends
+*   **User Profiles**: Dedicated profile pages for each user
 
 ### Medium Term (Enhanced Features)
-*   **Image Uploads**: Allow users to attach images to posts
-*   **Comments & Reactions**: Add commenting and emoji reactions
-*   **User Profiles**: Dedicated profile pages for each user
-*   **Search & Discovery**: Find and add friends
+*   **Comments & Reactions**: Add commenting and emoji reactions to posts
+*   **Post Privacy**: Allow users to set post visibility (public/friends only)
+*   **Search & Discovery**: Find and add friends by name or email
+*   **Notifications**: Real-time notifications for friend requests and interactions
+
+### Long Term (Advanced Features)
+*   **Image Editing**: Basic image filters and cropping tools
+*   **Video Processing**: Video compression and thumbnail generation
+*   **Admin Panel**: User management and content moderation tools
+*   **Analytics**: Usage statistics and engagement metrics
+
+## 7. Technical Achievements
+
+### ✅ Firebase Integration Resolved
+*   **Firestore API**: Successfully enabled and configured
+*   **Storage Bucket**: Resolved bucket URL mismatch (`.firebasestorage.app` vs `.appspot.com`)
+*   **Storage Rules**: Fixed permissions to allow authenticated users
+*   **Real-time Updates**: Implemented live timeline with Firestore listeners
+
+### ✅ File Upload System
+*   **Progress Tracking**: Real-time upload progress indicators
+*   **Error Handling**: Comprehensive error states and user feedback
+*   **File Validation**: Client-side type and size validation
+*   **Storage Organization**: Logical file structure in Firebase Storage

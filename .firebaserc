@@ -1,6 +1,7 @@
 {
   "projects": {
-    "prod": "crapbook-42b77"
+    "prod": "crapbook-42b77",
+    "default": "crapbook-42b77"
   },
   "targets": {},
   "etags": {}
