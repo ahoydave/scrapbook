@@ -24,7 +24,9 @@ Visit the deployed app at: **https://crapbook-42b77.web.app**
 - **Post Management**: Edit your own posts with inline editing and delete with confirmation
 - **Edit Tracking**: Visual "edited" indicators with timestamps for modified posts
 - **Media Uploads**: Upload images (JPEG, PNG, GIF, WebP) and videos (MP4, WebM, MOV)
-- **Real-time Feed**: Live timeline updates with posts from all users
+- **Private Timeline**: Live timeline updates with posts from you and your friends only
+- **Friend System**: Send friend requests by email, manage friendships, and private timeline filtering
+- **Friend Management**: Add friends, accept/decline requests, remove friendships, and cancel sent requests
 - **Comment System**: Comment on any post with real-time updates, delete your own comments, and Facebook-inspired UI
 - **File Management**: Automatic file validation, progress tracking, and complete storage cleanup
 - **Responsive Design**: Clean, modern UI inspired by Facebook

@@ -25,10 +25,48 @@ body {
   align-items: center;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-title {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-title:hover {
+  text-decoration: none;
+}
+
 .header h1 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #f7f3e9;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: #d2691e;
 }
 
 .user-info {
@@ -798,6 +836,349 @@ body {
   padding: 0.75rem 1.5rem;
   color: #e74c3c;
   font-size: 0.9rem;
+}
+
+/* Friends Page */
+.friends-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.friends-container h2 {
+  color: #8b4513;
+  margin-bottom: 2rem;
+}
+
+.friends-tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: #8b4513;
+}
+
+.tab-btn.active {
+  color: #8b4513;
+  border-bottom-color: #8b4513;
+}
+
+.friends-content {
+  min-height: 400px;
+}
+
+/* Add Friend */
+.add-friend {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.add-friend h3 {
+  color: #8b4513;
+  margin-bottom: 1rem;
+}
+
+.add-friend-form {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.email-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
+}
+
+.send-request-btn {
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.send-request-btn:hover:not(:disabled) {
+  background-color: #a0522d;
+}
+
+.send-request-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Friend Requests */
+.friend-requests {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.requests-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.requests-section h3 {
+  color: #8b4513;
+  margin-bottom: 1rem;
+}
+
+.no-requests {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.request-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.request-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.request-avatar, .friend-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.request-avatar-placeholder, .friend-avatar-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d2691e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.request-info, .friend-info {
+  flex: 1;
+}
+
+.request-name, .friend-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.request-email, .friend-email {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.request-date, .friend-since {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.request-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.accept-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accept-btn:hover {
+  background-color: #218838;
+}
+
+.decline-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.decline-btn:hover {
+  background-color: #c82333;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.pending-status {
+  color: #ffc107;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Friends List */
+.friends-list {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.friends-list h3 {
+  color: #8b4513;
+  margin-bottom: 1.5rem;
+}
+
+.no-friends {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.no-friends p {
+  margin-bottom: 0.5rem;
+}
+
+.friends-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.friend-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.friend-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.friend-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.remove-friend-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.remove-friend-btn:hover {
+  background-color: #c82333;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error {
+  color: #e74c3c;
 }
 
 /* Responsive Design */

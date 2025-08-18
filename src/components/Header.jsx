@@ -1,10 +1,12 @@
 import React from 'react';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const Header = () => {
   const [user, loading] = useAuthState(auth);
+  const location = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -28,7 +30,27 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-content">
-        <h1>Scrapbook</h1>
+        <div className="header-left">
+          <Link to="/" className="header-title">
+            <h1>Scrapbook</h1>
+          </Link>
+          {user && (
+            <nav className="header-nav">
+              <Link 
+                to="/" 
+                className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/friends" 
+                className={`nav-link ${location.pathname === '/friends' ? 'active' : ''}`}
+              >
+                Friends
+              </Link>
+            </nav>
+          )}
+        </div>
         {user && (
           <div className="user-info">
             <div className="user-details">

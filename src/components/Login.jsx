@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
+import { createOrUpdateUserProfile } from '../utils/userProfile';
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -18,7 +19,9 @@ const Login = () => {
       const user = result.user;
       
       console.log('Google auth successful:', user.displayName, user.email);
-      // Firestore operations removed for debugging
+      
+      // Create or update user profile in Firestore
+      await createOrUpdateUserProfile(user);
       
       // Redirect to home page after successful login
       navigate('/');

@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Friends from './components/Friends';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
@@ -26,6 +27,14 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
+            <PrivateRoute>
+              <Friends />
             </PrivateRoute>
           }
         />

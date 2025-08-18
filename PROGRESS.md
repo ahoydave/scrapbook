@@ -103,37 +103,50 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **UI Design**: Facebook-inspired comment bubbles with clean, responsive layout
 *   **Index Management**: Firestore composite index for optimized comment queries
 
+### ✅ 10. Friend System Implementation
+*   **User Profiles**: Auto-created user profiles on login with email-based lookups
+*   **Friend Requests**: Complete request system with send, receive, accept, decline, cancel
+*   **Email-First Invites**: Send friend requests to users who haven't joined yet
+*   **Friends Management**: View friends list, remove friendships, friend counts
+*   **Friends Navigation**: Dedicated Friends page with clean tabbed interface
+*   **Timeline Filtering**: Private timeline showing only posts from user and friends
+*   **Real-time Updates**: Live updates for all friend-related activities
+*   **Security & Privacy**: Proper Firestore rules and data access controls
+*   **Robust Queries**: Handles 10+ friends with chunked queries and proper indexing
+*   **UI Polish**: Facebook-inspired design with consistent styling and responsive layout
+
 ## 5. Current Status
 
-**🟢 FULLY FUNCTIONAL**: The app is a complete social posting platform. Users can:
+**🟢 FULLY FUNCTIONAL**: The app is a complete private social platform. Users can:
 - Sign in with Google accounts
 - Create text posts with optional media attachments
 - Upload images (JPEG, PNG, GIF, WebP up to 10MB)
 - Upload videos (MP4, WebM, MOV up to 50MB)
 - Edit their own posts with inline editing interface
 - Delete their own posts with confirmation and complete cleanup
-- View real-time timeline with posts from all users
+- **Add friends by email** (works even if they haven't joined yet)
+- **Manage friend requests** - send, receive, accept, decline, cancel
+- **View private timeline** with posts only from themselves and friends
+- **Remove friendships** and manage their friends list
+- **Comment on friend posts** with real-time updates
+- **Delete their own comments** with confirmation dialog
 - See edit history with "edited" timestamps
 - See upload progress and file previews
-- **Comment on posts** from any user, including their own posts
-- **View real-time comments** with live updates as others comment
-- **Delete their own comments** with confirmation dialog
 - Navigate between authenticated pages
 - Sign out properly
 
 **🟡 MINOR CONSIDERATIONS**:
-- Using permissive Firestore rules (allow all authenticated users)
+- Using permissive Firestore rules (allow all authenticated users for debugging)
 - Storage rules allow all authenticated users (appropriate for closed group)
-- Timeline shows posts from all users (no friend system yet)
+- Friend system complete - timeline now properly filtered by friendships
 
 ## 6. Next Steps
 
-### Short Term (Social Features)
-*   **User Profile Storage**: Save user profiles to Firestore on first login
-*   **Friend System**: Implement friend requests and management
-*   **Private Timeline**: Show posts only from user and their friends
-*   **User Profiles**: Dedicated profile pages for each user
+### Short Term (Enhanced Features)
 *   **Comment Editing**: Allow users to edit their own comments
+*   **User Profile Pages**: Dedicated profile pages for each friend
+*   **Post Privacy Settings**: Allow users to set post visibility levels
+*   **Enhanced Notifications**: Real-time notifications for friend activities
 
 ### Medium Term (Enhanced Features)
 *   **Emoji Reactions**: Add emoji reactions to posts and comments
