@@ -849,38 +849,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.friends-tabs {
-  display: flex;
-  border-bottom: 2px solid #eee;
-  margin-bottom: 2rem;
-  gap: 1rem;
-}
-
-.tab-btn {
-  background: none;
-  border: none;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #666;
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s;
-}
-
-.tab-btn:hover {
-  color: #8b4513;
-}
-
-.tab-btn.active {
-  color: #8b4513;
-  border-bottom-color: #8b4513;
-}
-
-.friends-content {
-  min-height: 400px;
-}
-
 /* Add Friend */
 .add-friend {
   background: white;
@@ -990,30 +958,33 @@ body {
   gap: 1rem;
 }
 
-.request-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  background-color: #fafafa;
+/* Request styling variations */
+.friend-card.incoming-request {
+  border-left: 3px solid #28a745;
+  background-color: #f8fff8;
 }
 
-.request-user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.friend-card.outgoing-request {
+  border-left: 3px solid #ffc107;
+  background-color: #fffef8;
 }
 
-.request-avatar, .friend-avatar {
+.friend-card.incoming-request .friend-actions {
+  gap: 0.5rem;
+}
+
+.friend-card.outgoing-request .friend-actions {
+  gap: 0.5rem;
+}
+
+.friend-avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.request-avatar-placeholder, .friend-avatar-placeholder {
+.friend-avatar-placeholder {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1026,30 +997,25 @@ body {
   font-size: 1.2rem;
 }
 
-.request-info, .friend-info {
+.friend-info {
   flex: 1;
 }
 
-.request-name, .friend-name {
+.friend-name {
   font-weight: 600;
   color: #333;
   margin-bottom: 0.25rem;
 }
 
-.request-email, .friend-email {
+.friend-email {
   color: #666;
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
 }
 
-.request-date, .friend-since {
+.friend-since {
   color: #999;
   font-size: 0.8rem;
-}
-
-.request-actions {
-  display: flex;
-  gap: 0.5rem;
 }
 
 .accept-btn {
