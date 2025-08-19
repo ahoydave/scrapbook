@@ -115,6 +115,16 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Robust Queries**: Handles 10+ friends with chunked queries and proper indexing
 *   **UI Polish**: Facebook-inspired design with consistent styling and responsive layout
 
+### ✅ 11. Emoji Reactions System
+*   **Universal Reactions**: React to both posts and comments with emoji
+*   **24 Emoji Options**: Popular reactions in organized grid picker
+*   **Multiple Reactions**: Add different emojis to same post/comment
+*   **Reaction Counts**: Shows number when multiple users use same emoji
+*   **Click to Remove**: Remove your own reactions by clicking them
+*   **Smart Positioning**: Emoji picker adapts to screen edges and context
+*   **Real-time Updates**: Live reaction changes across all users
+*   **Graceful Errors**: Reactions fail silently without breaking UI
+
 ## 5. Current Status
 
 **🟢 FULLY FUNCTIONAL**: The app is a complete private social platform. Users can:
@@ -130,6 +140,8 @@ This document outlines the project goals, technology stack, and the progress mad
 - **Remove friendships** and manage their friends list
 - **Comment on friend posts** with real-time updates
 - **Delete their own comments** with confirmation dialog
+- **React with emojis** to posts and comments (24 options)
+- **Remove their own reactions** by clicking them again
 - See edit history with "edited" timestamps
 - See upload progress and file previews
 - Navigate between authenticated pages

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import Header from './Header';
@@ -7,11 +7,6 @@ import PostList from './PostList';
 
 const Home = () => {
   const [user, loading] = useAuthState(auth);
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
-
-  const handlePostCreated = () => {
-    setRefreshTrigger(prev => prev + 1);
-  };
 
   if (loading) {
     return (
@@ -28,9 +23,9 @@ const Home = () => {
     <div>
       <Header />
       <main className="main-content">
-        <PostCreator onPostCreated={handlePostCreated} />
+        <PostCreator />
         
-        <PostList refreshTrigger={refreshTrigger} />
+        <PostList />
       </main>
     </div>
   );

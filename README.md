@@ -28,6 +28,7 @@ Visit the deployed app at: **https://crapbook-42b77.web.app**
 - **Friend System**: Send friend requests by email, manage friendships, and private timeline filtering
 - **Friend Management**: Add friends, accept/decline requests, remove friendships, and cancel sent requests
 - **Comment System**: Comment on any post with real-time updates, delete your own comments, and Facebook-inspired UI
+- **Emoji Reactions**: React to posts and comments with 24+ emojis, see reaction counts, and remove your own reactions
 - **File Management**: Automatic file validation, progress tracking, and complete storage cleanup
 - **Responsive Design**: Clean, modern UI inspired by Facebook
 - **Protected Routes**: Authentication-required pages

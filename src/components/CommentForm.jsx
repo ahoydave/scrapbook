@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import MentionInput from './MentionInput';
+import { convertToStorageFormat } from '../utils/mentionUtils.jsx';
 
 const CommentForm = ({ postId }) => {
   const [user] = useAuthState(auth);
   const [content, setContent] = useState('');
+  const [mentions, setMentions] = useState([]);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -16,16 +19,21 @@ const CommentForm = ({ postId }) => {
     setSubmitting(true);
 
     try {
+      // Convert display text to storage format using selected friends
+      const storageContent = convertToStorageFormat(content.trim(), mentions);
+      
       await addDoc(collection(db, 'comments'), {
         postId,
         userId: user.uid,
         userDisplayName: user.displayName || 'Anonymous',
         userPhotoURL: user.photoURL || null,
-        content: content.trim(),
+        content: storageContent,
+        mentions: mentions.map(m => ({ userId: m.userId, displayName: m.displayName })),
         createdAt: serverTimestamp()
       });
       
       setContent('');
+      setMentions([]);
     } catch (error) {
       console.error('Error creating comment:', error);
       alert('Failed to post comment. Please try again.');
@@ -56,13 +64,14 @@ const CommentForm = ({ postId }) => {
         >
           {user.displayName?.charAt(0)?.toUpperCase() || 'U'}
         </div>
-        <input
-          type="text"
+        <MentionInput
           value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Write a comment..."
-          className="comment-form-input"
+          onChange={setContent}
+          onMentionsChange={setMentions}
+          placeholder="Write a comment... (use @ to mention friends)"
+          className="comment-form-input comment-mention-input"
           disabled={submitting}
+          rows={1}
         />
         <button 
           type="submit" 

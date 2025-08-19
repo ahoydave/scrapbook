@@ -330,7 +330,7 @@ body {
 .preview-image, .preview-video {
   width: 100%;
   max-height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -661,7 +661,7 @@ body {
   height: auto;
   display: block;
   max-height: 600px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .post-video {
@@ -712,6 +712,13 @@ body {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   background-color: white;
+}
+
+.comment-mention-input {
+  resize: none;
+  min-height: auto;
+  max-height: 120px;
+  overflow-y: auto;
 }
 
 .comment-form-input:focus {
@@ -1353,6 +1360,115 @@ body {
   color: #e74c3c;
 }
 
+/* Mention Input */
+.mention-input-container {
+  position: relative;
+}
+
+.comment-form-header .mention-input-container {
+  flex: 1;
+}
+
+.post-creator-form .mention-input-container {
+  width: 100%;
+}
+
+.mention-input-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* Style the raw mention text to be less prominent in inputs */
+.mention-input-container textarea {
+  color: #333;
+}
+
+/* This won't work for textareas, but we can make the text more readable */
+
+.mention-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.mention-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mention-suggestion:last-child {
+  border-bottom: none;
+}
+
+.mention-suggestion:hover,
+.mention-suggestion.selected {
+  background-color: #f8f9fa;
+}
+
+.mention-suggestion-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mention-suggestion-avatar-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #d2691e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.mention-suggestion-name {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Simple mention styling */
+.mention {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  font-weight: 500;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+}
+
+.mention-highlighted {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+/* Post/Comment background highlighting when user is mentioned */
+.post.mentioned {
+  background-color: #fff8f0;
+  border-left: 4px solid #f57c00;
+}
+
+.comment.mentioned {
+  background-color: #fff8f0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-content {
@@ -1364,5 +1480,11 @@ body {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     border-radius: 0;
+  }
+
+  .mention-suggestions {
+    max-width: calc(100vw - 2rem);
+    left: 1rem !important;
+    right: 1rem !important;
   }
 }

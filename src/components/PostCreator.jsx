@@ -3,10 +3,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { auth, db, storage } from '../firebase';
+import MentionInput from './MentionInput';
+import { convertToStorageFormat } from '../utils/mentionUtils.jsx';
 
-const PostCreator = ({ onPostCreated }) => {
+const PostCreator = () => {
   const [user] = useAuthState(auth);
   const [content, setContent] = useState('');
+  const [mentions, setMentions] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -92,12 +95,16 @@ const PostCreator = ({ onPostCreated }) => {
     setUploadProgress(0);
 
     try {
+      // Convert display text to storage format using selected friends
+      const storageContent = convertToStorageFormat(content.trim(), mentions);
+      
       // Create the post document first
       const postData = {
         userId: user.uid,
         userDisplayName: user.displayName || user.email,
         userPhotoURL: user.photoURL || null,
-        content: content.trim(),
+        content: storageContent,
+        mentions: mentions.map(m => ({ userId: m.userId, displayName: m.displayName })),
         mediaType: 'none',
         mediaURL: null,
         createdAt: serverTimestamp(),
@@ -122,14 +129,12 @@ const PostCreator = ({ onPostCreated }) => {
 
       // Reset form
       setContent('');
+      setMentions([]);
       setSelectedFile(null);
       setFilePreview(null);
       setUploadProgress(0);
 
-      // Notify parent component
-      if (onPostCreated) {
-        onPostCreated();
-      }
+      // Post created successfully - real-time listener will update the timeline
 
     } catch (error) {
       console.error('Error creating post:', error);
@@ -163,10 +168,11 @@ const PostCreator = ({ onPostCreated }) => {
       </div>
 
       <form onSubmit={handleSubmit} className="post-creator-form">
-        <textarea
+        <MentionInput
           value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Add text"
+          onChange={setContent}
+          onMentionsChange={setMentions}
+          placeholder="Add text (use @ to mention friends)"
           className="post-content-input"
           rows="3"
           disabled={uploading}

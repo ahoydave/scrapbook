@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import Reactions from './Reactions';
+import { renderTextWithMentions, isUserMentioned } from '../utils/mentionUtils.jsx';
 
 const Comment = ({ comment }) => {
   const [user] = useAuthState(auth);
@@ -41,8 +42,11 @@ const Comment = ({ comment }) => {
   // Check if current user is the comment author
   const canDelete = user && user.uid === comment.userId;
 
+  // Check if current user is mentioned in this comment
+  const userMentioned = user && isUserMentioned(comment.content, user.uid);
+
   return (
-    <div className="comment">
+    <div className={`comment ${userMentioned ? 'mentioned' : ''}`}>
       <div className="comment-author">
         {comment.userPhotoURL ? (
           <img 
@@ -78,7 +82,7 @@ const Comment = ({ comment }) => {
               </button>
             )}
           </div>
-          <div className="comment-text">{comment.content}</div>
+          <div className="comment-text">{renderTextWithMentions(comment.content, user?.uid)}</div>
         </div>
         <div className="comment-meta">
           <div className="comment-timestamp">{formatDate(comment.createdAt)}</div>

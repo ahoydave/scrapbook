@@ -6,12 +6,15 @@ import { auth, db, storage } from '../firebase';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import Reactions from './Reactions';
+import { renderTextWithMentions, extractMentions, isUserMentioned, convertToStorageFormat } from '../utils/mentionUtils.jsx';
+import MentionInput from './MentionInput';
 
 const Post = ({ post, onPostDeleted }) => {
   const [user] = useAuthState(auth);
   const [deleting, setDeleting] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editContent, setEditContent] = useState(post.content || '');
+  const [editMentions, setEditMentions] = useState([]);
   const formatDate = (timestamp) => {
     if (!timestamp) return '';
     
@@ -70,6 +73,7 @@ const Post = ({ post, onPostDeleted }) => {
   const handleEdit = () => {
     setEditing(true);
     setEditContent(post.content || '');
+    setEditMentions(extractMentions(post.content || ''));
   };
 
   const handleSaveEdit = async () => {
@@ -79,8 +83,12 @@ const Post = ({ post, onPostDeleted }) => {
     }
 
     try {
+      // Convert display text to storage format using selected friends
+      const storageContent = convertToStorageFormat(editContent.trim(), editMentions);
+      
       await updateDoc(doc(db, 'posts', post.id), {
-        content: editContent.trim(),
+        content: storageContent,
+        mentions: editMentions.map(m => ({ userId: m.userId, displayName: m.displayName })),
         updatedAt: serverTimestamp(),
         edited: true
       });
@@ -94,6 +102,7 @@ const Post = ({ post, onPostDeleted }) => {
   const handleCancelEdit = () => {
     setEditing(false);
     setEditContent(post.content || '');
+    setEditMentions(extractMentions(post.content || ''));
   };
 
   // Check if current user is the post author
@@ -103,8 +112,11 @@ const Post = ({ post, onPostDeleted }) => {
   const wasEdited = post.edited && post.updatedAt && post.createdAt && 
     post.updatedAt.seconds !== post.createdAt.seconds;
 
+  // Check if current user is mentioned in this post
+  const userMentioned = user && isUserMentioned(post.content, user.uid);
+
   return (
-    <article className="post">
+    <article className={`post ${userMentioned ? 'mentioned' : ''}`}>
       <header className="post-header">
         <div className="post-author">
           {post.userPhotoURL ? (
@@ -158,12 +170,13 @@ const Post = ({ post, onPostDeleted }) => {
         <div className="post-content">
           {editing ? (
             <div className="post-edit-form">
-              <textarea
+              <MentionInput
                 value={editContent}
-                onChange={(e) => setEditContent(e.target.value)}
+                onChange={setEditContent}
+                onMentionsChange={setEditMentions}
                 className="post-edit-textarea"
                 rows="3"
-                placeholder="Add text"
+                placeholder="Add text (use @ to mention friends)"
               />
               <div className="post-edit-actions">
                 <button 
@@ -183,7 +196,7 @@ const Post = ({ post, onPostDeleted }) => {
             </div>
           ) : (
             <div>
-              <p>{post.content}</p>
+              <p>{renderTextWithMentions(post.content, user?.uid)}</p>
               {wasEdited && (
                 <p className="post-edited-indicator">
                   edited {formatDate(post.updatedAt)}

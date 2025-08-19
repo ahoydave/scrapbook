@@ -1,30 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection, orderBy, query, where, getDocs } from 'firebase/firestore';
+import { collection, orderBy, query, where, onSnapshot } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import Post from './Post';
 
-const PostList = ({ refreshTrigger }) => {
+const PostList = () => {
   const [user] = useAuthState(auth);
   const [friendIds, setFriendIds] = useState(null);
   const [friendsLoading, setFriendsLoading] = useState(true);
 
-  // Get user's friends
-  useEffect(() => {
-    const getFriends = async () => {
-      if (!user) {
-        setFriendIds([]);
-        setFriendsLoading(false);
-        return;
-      }
+  // Get user's friendships with real-time updates
+  const [friendshipsValue, friendshipsLoading, friendshipsError] = useCollection(
+    user ? collection(db, 'friendships') : null,
+    { snapshotListenOptions: { includeMetadataChanges: true } }
+  );
 
-      try {
-        const friendshipsRef = collection(db, 'friendships');
-        const snapshot = await getDocs(friendshipsRef);
-        
-        const userFriendIds = [];
-        snapshot.docs.forEach(doc => {
+  // Process friendships to get friend IDs
+  useEffect(() => {
+    if (!user) {
+      setFriendIds([]);
+      setFriendsLoading(false);
+      return;
+    }
+
+    if (friendshipsLoading) {
+      setFriendsLoading(true);
+      return;
+    }
+
+    if (friendshipsError) {
+      console.error('Error loading friendships:', friendshipsError);
+      // Fallback to showing only user's own posts
+      setFriendIds([user.uid]);
+      setFriendsLoading(false);
+      return;
+    }
+
+    try {
+      const userFriendIds = [];
+      if (friendshipsValue) {
+        friendshipsValue.docs.forEach(doc => {
           const friendship = doc.data();
           if (friendship.user1Id === user.uid) {
             userFriendIds.push(friendship.user2Id);
@@ -32,76 +48,99 @@ const PostList = ({ refreshTrigger }) => {
             userFriendIds.push(friendship.user1Id);
           }
         });
-        
-        // Include the current user's ID so they can see their own posts
-        setFriendIds([user.uid, ...userFriendIds]);
-      } catch (error) {
-        console.error('Error loading friends:', error);
-        // Fallback to showing only user's own posts
-        setFriendIds([user.uid]);
-      } finally {
-        setFriendsLoading(false);
       }
-    };
+      
+      // Include the current user's ID so they can see their own posts
+      setFriendIds([user.uid, ...userFriendIds]);
+    } catch (error) {
+      console.error('Error processing friendships:', error);
+      // Fallback to showing only user's own posts
+      setFriendIds([user.uid]);
+    } finally {
+      setFriendsLoading(false);
+    }
+  }, [user, friendshipsValue, friendshipsLoading, friendshipsError]);
 
-    getFriends();
-  }, [user]);
-
-  // Get posts from friends and user (handle Firestore 'in' limit of 10)
+  // Get posts from friends and user with real-time updates (handle Firestore 'in' limit of 10)
   const [allPosts, setAllPosts] = useState([]);
   const [postsLoading, setPostsLoading] = useState(true);
   const [postsError, setPostsError] = useState(null);
 
   useEffect(() => {
-    const getPosts = async () => {
-      if (!friendIds || friendIds.length === 0) {
-        setAllPosts([]);
-        setPostsLoading(false);
-        return;
-      }
+    if (!friendIds || friendIds.length === 0) {
+      setAllPosts([]);
+      setPostsLoading(false);
+      return;
+    }
 
-      try {
-        setPostsLoading(true);
-        const allPostsData = [];
+    setPostsLoading(true);
+    setPostsError(null);
 
-        // Split friendIds into chunks of 10 (Firestore 'in' limit)
-        const chunks = [];
-        for (let i = 0; i < friendIds.length; i += 10) {
-          chunks.push(friendIds.slice(i, i + 10));
-        }
+    // Split friendIds into chunks of 10 (Firestore 'in' limit)
+    const chunks = [];
+    for (let i = 0; i < friendIds.length; i += 10) {
+      chunks.push(friendIds.slice(i, i + 10));
+    }
 
-        // Query each chunk
-        for (const chunk of chunks) {
-          const q = query(
-            collection(db, 'posts'),
-            where('userId', 'in', chunk),
-            orderBy('createdAt', 'desc')
-          );
-          const snapshot = await getDocs(q);
+    // Keep track of all posts from all chunks
+    const allPostsMap = new Map();
+    let completedChunks = 0;
+    const unsubscribeFunctions = [];
+
+    const updateAllPosts = () => {
+      // Combine all posts and sort by creation time
+      const combinedPosts = Array.from(allPostsMap.values()).flat();
+      combinedPosts.sort((a, b) => {
+        if (!a.createdAt || !b.createdAt) return 0;
+        return b.createdAt.seconds - a.createdAt.seconds;
+      });
+      setAllPosts(combinedPosts);
+    };
+
+    // Set up real-time listener for each chunk
+    chunks.forEach((chunk, index) => {
+      const q = query(
+        collection(db, 'posts'),
+        where('userId', 'in', chunk),
+        orderBy('createdAt', 'desc')
+      );
+
+      const unsubscribe = onSnapshot(
+        q,
+        (snapshot) => {
           const posts = snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
           }));
-          allPostsData.push(...posts);
+          
+          // Update posts for this chunk
+          allPostsMap.set(index, posts);
+          
+          // Mark this chunk as completed on first load
+          if (completedChunks < chunks.length) {
+            completedChunks++;
+            if (completedChunks === chunks.length) {
+              setPostsLoading(false);
+            }
+          }
+          
+          // Update the combined posts list
+          updateAllPosts();
+        },
+        (error) => {
+          console.error('Error listening to posts:', error);
+          setPostsError(error);
+          setPostsLoading(false);
         }
+      );
 
-        // Sort all posts by creation time
-        allPostsData.sort((a, b) => {
-          if (!a.createdAt || !b.createdAt) return 0;
-          return b.createdAt.seconds - a.createdAt.seconds;
-        });
+      unsubscribeFunctions.push(unsubscribe);
+    });
 
-        setAllPosts(allPostsData);
-        setPostsError(null);
-      } catch (error) {
-        console.error('Error loading posts:', error);
-        setPostsError(error);
-      } finally {
-        setPostsLoading(false);
-      }
+    // Cleanup function
+    return () => {
+      unsubscribeFunctions.forEach(unsubscribe => unsubscribe());
     };
-
-    getPosts();
   }, [friendIds]);
 
   if (friendsLoading || postsLoading) {
