@@ -1,12 +1,34 @@
 import React from 'react';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { collection, query, where, orderBy } from 'firebase/firestore';
 import { Link, useLocation } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 
 const Header = () => {
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
+
+  // Get incoming friend requests by userId
+  const [incomingByIdValue] = useCollection(
+    user ? query(
+      collection(db, 'friendRequests'),
+      where('toUserId', '==', user.uid),
+      where('status', '==', 'pending')
+    ) : null,
+    { snapshotListenOptions: { includeMetadataChanges: true } }
+  );
+
+  // Get incoming friend requests by email
+  const [incomingByEmailValue] = useCollection(
+    user ? query(
+      collection(db, 'friendRequests'),
+      where('toUserEmail', '==', user.email.toLowerCase()),
+      where('status', '==', 'pending')
+    ) : null,
+    { snapshotListenOptions: { includeMetadataChanges: true } }
+  );
 
   const handleLogout = async () => {
     try {
@@ -15,6 +37,26 @@ const Header = () => {
       console.error('Error signing out:', error);
     }
   };
+
+  // Calculate incoming requests only
+  const getIncomingRequestsCount = () => {
+    if (!user) return 0;
+
+    // Get incoming requests
+    const incomingByIdRequests = incomingByIdValue?.docs || [];
+    const incomingByEmailRequests = incomingByEmailValue?.docs || [];
+    
+    // Combine and deduplicate incoming requests
+    const allIncomingRequests = [...incomingByIdRequests, ...incomingByEmailRequests];
+    const incomingRequestsMap = new Map();
+    allIncomingRequests.forEach(doc => {
+      incomingRequestsMap.set(doc.id, doc);
+    });
+    
+    return incomingRequestsMap.size;
+  };
+
+  const incomingCount = getIncomingRequestsCount();
 
   if (loading) {
     return (
@@ -47,6 +89,9 @@ const Header = () => {
                 className={`nav-link ${location.pathname === '/friends' ? 'active' : ''}`}
               >
                 Friends
+                {incomingCount > 0 && (
+                  <span className="notification-badge">{incomingCount}</span>
+                )}
               </Link>
             </nav>
           )}
