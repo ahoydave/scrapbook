@@ -125,6 +125,14 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Real-time Updates**: Live reaction changes across all users
 *   **Graceful Errors**: Reactions fail silently without breaking UI
 
+### ⚠️ 12. @Mentions System (In Progress)
+*   **Friend Selection**: Type @ to see dropdown with friend options
+*   **Clean Display**: Shows @FriendName in inputs instead of technical format
+*   **Data Storage**: Stores mention data with userIds for proper functionality
+*   **Mention Highlighting**: Planned blue/orange highlighting for mentions
+*   **Background Highlighting**: Planned post/comment background highlighting when mentioned
+*   **Status**: ⚠️ **Currently not working correctly** - implementation needs debugging
+
 ## 5. Current Status
 
 **🟢 FULLY FUNCTIONAL**: The app is a complete private social platform. Users can:
@@ -147,12 +155,20 @@ This document outlines the project goals, technology stack, and the progress mad
 - Navigate between authenticated pages
 - Sign out properly
 
+**🟡 KNOWN ISSUES**:
+- **@Mentions**: Friend mention system implemented but not working correctly yet
+
 **🟡 MINOR CONSIDERATIONS**:
 - Using permissive Firestore rules (allow all authenticated users for debugging)
 - Storage rules allow all authenticated users (appropriate for closed group)
 - Friend system complete - timeline now properly filtered by friendships
 
 ## 6. Next Steps
+
+### Immediate Priority (Bug Fixes)
+*   **Fix @Mentions System**: Debug and resolve issues with friend mention functionality
+*   **Mention Highlighting**: Ensure mentions display with proper blue/orange highlighting
+*   **Background Highlighting**: Fix post/comment background highlighting when user is mentioned
 
 ### Short Term (Enhanced Features)
 *   **Comment Editing**: Allow users to edit their own comments
@@ -161,8 +177,6 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Enhanced Notifications**: Real-time notifications for friend activities
 
 ### Medium Term (Enhanced Features)
-*   **Emoji Reactions**: Add emoji reactions to posts and comments
-*   **Post Privacy**: Allow users to set post visibility (public/friends only)
 *   **Search & Discovery**: Find and add friends by name or email
 *   **Notifications**: Real-time notifications for friend requests and interactions
 *   **Comment Threads**: Allow replies to comments for nested conversations
