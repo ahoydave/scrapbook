@@ -46,5 +46,15 @@ service cloud.firestore {
       allow update, delete: if request.auth != null 
         && request.auth.uid == resource.data.userId;
     }
+    
+    // Reactions collection - allow authenticated users to read all reactions
+    // and create/delete their own reactions
+    match /reactions/{reactionId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.auth.uid == request.resource.data.userId;
+      allow delete: if request.auth != null 
+        && request.auth.uid == resource.data.userId;
+    }
   }
 }

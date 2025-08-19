@@ -5,6 +5,7 @@ import { ref, deleteObject } from 'firebase/storage';
 import { auth, db, storage } from '../firebase';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
+import Reactions from './Reactions';
 
 const Post = ({ post, onPostDeleted }) => {
   const [user] = useAuthState(auth);
@@ -214,6 +215,8 @@ const Post = ({ post, onPostDeleted }) => {
           ) : null}
         </div>
       )}
+
+      <Reactions targetType="post" targetId={post.id} />
 
       <div className="post-comments-section">
         <CommentList postId={post.id} />

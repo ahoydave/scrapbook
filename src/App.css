@@ -671,6 +671,7 @@ body {
 /* Comments Section */
 .post-comments-section {
   border-top: 1px solid #eee;
+  margin-top: 1rem;
 }
 
 .comment-form {
@@ -828,10 +829,21 @@ body {
   white-space: pre-wrap;
 }
 
+.comment-meta {
+  margin-left: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
 .comment-timestamp {
   font-size: 0.75rem;
   color: #666;
-  margin-left: 0.75rem;
+}
+
+.comment-meta .reactions-container {
+  margin-top: 0;
 }
 
 .comments-loading {
@@ -1081,6 +1093,180 @@ body {
 
 .cancel-btn:hover {
   background-color: #5a6268;
+}
+
+/* Reactions */
+.reactions-container {
+  margin-top: 0.25rem;
+}
+
+.reactions-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Post reactions - normal size, aligned with post content */
+.post .reactions-container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.post .reactions-display {
+  justify-content: flex-start;
+}
+
+/* Comment reactions - smaller, right aligned */
+.comment-meta .reactions-display {
+  justify-content: flex-end;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.reaction-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 16px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 28px;
+}
+
+/* Smaller reaction buttons for comments */
+.comment-meta .reaction-button {
+  gap: 0.2rem;
+  border-radius: 12px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  min-height: 22px;
+}
+
+.reaction-button:hover {
+  background: #e9ecef;
+  transform: scale(1.05);
+}
+
+.reaction-button.user-reacted {
+  background: #cce5ff;
+  border-color: #66b3ff;
+  color: #0066cc;
+}
+
+.reaction-button.user-reacted:hover {
+  background: #b3d9ff;
+}
+
+.reaction-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.reaction-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+  margin-left: 0.1rem;
+}
+
+/* Smaller emojis and counts for comments */
+.comment-meta .reaction-emoji {
+  font-size: 0.8rem;
+}
+
+.comment-meta .reaction-count {
+  font-size: 0.65rem;
+  margin-left: 0.05rem;
+}
+
+.reaction-button.user-reacted .reaction-count {
+  color: #0066cc;
+}
+
+.add-reaction {
+  position: relative;
+}
+
+.add-reaction-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.2s;
+}
+
+/* Smaller add button for comments */
+.comment-meta .add-reaction-button {
+  width: 22px;
+  height: 22px;
+  font-size: 0.8rem;
+}
+
+.add-reaction-button:hover {
+  background: #e9ecef;
+  color: #333;
+  transform: scale(1.1);
+}
+
+.emoji-picker {
+  position: fixed;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.2rem;
+  z-index: 9999;
+  max-width: 180px;
+}
+
+/* Emoji picker positioning is handled dynamically via JavaScript */
+
+.emoji-option {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+/* Smaller emoji options for comment pickers */
+.comment-meta .emoji-option {
+  width: 22px;
+  height: 22px;
+  font-size: 0.9rem;
+}
+
+.emoji-option:hover {
+  background: #f8f9fa;
+}
+
+.reactions-loading, .reactions-error {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
 }
 
 .pending-status {

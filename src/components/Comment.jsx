@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import Reactions from './Reactions';
 
 const Comment = ({ comment }) => {
   const [user] = useAuthState(auth);
@@ -79,7 +80,10 @@ const Comment = ({ comment }) => {
           </div>
           <div className="comment-text">{comment.content}</div>
         </div>
-        <div className="comment-timestamp">{formatDate(comment.createdAt)}</div>
+        <div className="comment-meta">
+          <div className="comment-timestamp">{formatDate(comment.createdAt)}</div>
+          <Reactions targetType="comment" targetId={comment.id} />
+        </div>
       </div>
     </div>
   );
