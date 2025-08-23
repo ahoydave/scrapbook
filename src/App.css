@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
   background-color: #f7f3e9;
   color: #3d2914;
@@ -8,12 +7,11 @@ body {
   min-height: 100vh;
 }
 
-/* Header Styles */
 .header {
   background-color: #8b4513;
   color: #f7f3e9;
   padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -86,7 +84,7 @@ body {
   font-weight: bold;
   min-width: 20px;
   padding: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .user-info {
@@ -140,18 +138,12 @@ body {
   background-color: #cd853f;
 }
 
-/* Main Content */
 .main-content {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-
-
-
-
-/* Auth Forms */
 .auth-container {
   min-height: 100vh;
   display: flex;
@@ -166,7 +158,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
@@ -257,7 +249,7 @@ body {
 .post-creator {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -327,7 +319,8 @@ body {
   overflow: hidden;
 }
 
-.preview-image, .preview-video {
+.preview-image,
+.preview-video {
   width: 100%;
   max-height: 400px;
   object-fit: contain;
@@ -430,8 +423,12 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .post-list-error {
@@ -457,14 +454,14 @@ body {
   color: #666;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Individual Post */
 .post {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -601,7 +598,8 @@ body {
   justify-content: flex-end;
 }
 
-.post-save-btn, .post-cancel-btn {
+.post-save-btn,
+.post-cancel-btn {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
@@ -656,7 +654,8 @@ body {
   width: 100%;
 }
 
-.post-image, .post-video {
+.post-image,
+.post-video {
   width: 100%;
   height: auto;
   display: block;
@@ -685,14 +684,16 @@ body {
   gap: 0.75rem;
 }
 
-.comment-form-avatar, .comment-avatar {
+.comment-form-avatar,
+.comment-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.comment-form-avatar-placeholder, .comment-avatar-placeholder {
+.comment-form-avatar-placeholder,
+.comment-avatar-placeholder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -893,7 +894,7 @@ body {
   background: white;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
 }
 
@@ -976,7 +977,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .requests-section h3 {
@@ -1234,7 +1235,7 @@ body {
   border: 1px solid #dee2e6;
   border-radius: 8px;
   padding: 0.4rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 0.2rem;
@@ -1269,7 +1270,8 @@ body {
   background: #f8f9fa;
 }
 
-.reactions-loading, .reactions-error {
+.reactions-loading,
+.reactions-error {
   font-size: 0.8rem;
   color: #666;
   font-style: italic;
@@ -1287,7 +1289,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .friends-list h3 {
@@ -1350,7 +1352,8 @@ body {
   background-color: #c82333;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 2rem;
   color: #666;
@@ -1395,7 +1398,7 @@ body {
   background: white;
   border: 1px solid #dee2e6;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
@@ -1475,8 +1478,9 @@ body {
     margin: 1rem auto;
     padding: 0 0.5rem;
   }
-  
-  .post-creator, .post {
+
+  .post-creator,
+  .post {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     border-radius: 0;
