@@ -20,7 +20,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
               className={classNames(
                 item.current
                   ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                  : 'border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',
+                  : 'border-transparent text-gray-600 dark:text-[#a9a9a9] hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',
                 'relative block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
               )}
             >
@@ -54,7 +54,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
             )}
           </div>
           <div className="ml-3">
-            <div className="text-base font-medium text-gray-800">
+            <div className="text-base font-medium text-gray-800 dark:text-[#e4e4e4]">
               {userDisplayInfo.displayName}
             </div>
           </div>
@@ -63,7 +63,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
           <DisclosureButton
             as="button"
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+            className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 dark:text-[#a9a9a9]"
           >
             Logout
           </DisclosureButton>

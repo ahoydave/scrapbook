@@ -8,7 +8,7 @@ import { useHeaderState } from '../../hooks/useHeaderState';
 import NavBar from './NavBar';
 import UserMenu from './UserMenu';
 import MobileMenu from './MobileMenu';
-import { Link } from 'react-router-dom';
+import { Link } from '../common/link';
 import getNavigationItems from '../../functions/getNavigationItems';
 
 const Header = () => {
@@ -27,13 +27,13 @@ const Header = () => {
 
   if (loading) {
     return (
-      <div className="min-h-16 border-b border-gray-200 bg-white">
+      <div className="min-h-16 border-b border-gray-200 bg-white dark:bg-[#0f0f0f]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Heading level={1} className="text-2xl font-bold text-indigo-600">Scrapbook</Heading>
             </div>
-            <div className="text-gray-500">Loading...</div>
+            <div className="text-gray-500 dark:text-[#d9d9d9]">Loading...</div>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const Header = () => {
   }
 
   return (
-    <Disclosure as="nav" className="border-b border-gray-200 bg-white">
+    <Disclosure as="nav" className="border-b border-gray-200 bg-white dark:bg-[#0f0f0f] dark:border-[#0f0f0f]">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

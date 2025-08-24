@@ -20,7 +20,7 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-[#e4f0f0] min-h-screen">
+    <div className="bg-[#e4f0f0] dark:bg-[#2b2b2b] min-h-screen">
       <Header />
        <main className="max-w-3xl mx-auto lg:px-8 py-6 flex flex-col">
         <PostCreator />
