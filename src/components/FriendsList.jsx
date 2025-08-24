@@ -1,6 +1,5 @@
-import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection, query, where, orderBy, doc, deleteDoc, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const FriendsList = ({ userId }) => {

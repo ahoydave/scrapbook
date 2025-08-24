@@ -1,6 +1,5 @@
-import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection, query, where, orderBy, doc, updateDoc, addDoc, serverTimestamp, or, and } from 'firebase/firestore';
+import { collection, query, where, orderBy, doc, updateDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 
