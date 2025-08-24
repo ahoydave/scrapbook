@@ -20,11 +20,10 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className="bg-[#e4f0f0] min-h-screen">
       <Header />
-      <main className="main-content">
+       <main className="max-w-3xl mx-auto lg:px-8 py-6 flex flex-col">
         <PostCreator />
-        
         <PostList />
       </main>
     </div>
