@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection, query, where, orderBy, doc, updateDoc, addDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
-import Header from './Header';
+import Header from './header/Header';
 import AddFriend from './AddFriend';
 
 const Friends = () => {

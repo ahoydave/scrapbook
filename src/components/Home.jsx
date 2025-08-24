@@ -1,12 +1,12 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
-import Header from './Header';
+import Header from './header/Header';
 import PostCreator from './PostCreator';
 import PostList from './PostList';
 
 const Home = () => {
-  const [user, loading] = useAuthState(auth);
+  const [_, loading] = useAuthState(auth);
 
   if (loading) {
     return (
