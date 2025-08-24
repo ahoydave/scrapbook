@@ -125,23 +125,23 @@ const AddFriend = ({ userId }) => {
   };
 
   return (
-    <div className="add-friend">
-      <h3>Add a Friend</h3>
+    <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+      <h3 className="text-xl font-semibold text-[#8b4513] mb-4">Add a Friend</h3>
       
-      <form onSubmit={handleSendRequest} className="add-friend-form">
-        <div className="form-group">
+      <form onSubmit={handleSendRequest} className="mb-4">
+        <div className="flex gap-4 items-center">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
-            className="email-input"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8b4513] focus:ring-opacity-20 focus:border-[#8b4513]"
             disabled={loading}
           />
           <button 
             type="submit" 
             disabled={loading || !email.trim()}
-            className="send-request-btn"
+            className="bg-[#8b4513] hover:bg-[#a0522d] disabled:bg-gray-400 text-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed"
           >
             {loading ? 'Sending...' : 'Send Friend Request'}
           </button>
@@ -149,7 +149,11 @@ const AddFriend = ({ userId }) => {
       </form>
 
       {message && (
-        <div className={`message ${messageType}`}>
+        <div className={`p-4 rounded-md ${
+          messageType === 'success' 
+            ? 'bg-green-100 text-green-800 border border-green-200' 
+            : 'bg-red-100 text-red-800 border border-red-200'
+        }`}>
           {message}
         </div>
       )}
