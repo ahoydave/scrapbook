@@ -38,15 +38,26 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
         <div className="flex items-center px-4">
           <div className="shrink-0">
             {userDisplayInfo.photoURL ? (
-              <img 
-                src={userDisplayInfo.photoURL} 
-                alt="Profile" 
-                className="h-10 w-10 rounded-full outline -outline-offset-1 outline-black/5"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
+              <>
+                <img 
+                  src={userDisplayInfo.photoURL} 
+                  alt="Profile" 
+                  className="h-10 w-10 rounded-full outline -outline-offset-1 outline-black/5"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    const fallback = e.target.nextSibling;
+                    if (fallback) {
+                      fallback.style.display = 'flex';
+                    }
+                  }}
+                />
+                <div 
+                  className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-medium" 
+                  style={{ display: 'none' }}
+                >
+                  {userDisplayInfo.initial}
+                </div>
+              </>
             ) : (
               <div className="h-10 w-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-medium">
                 {userDisplayInfo.initial}
