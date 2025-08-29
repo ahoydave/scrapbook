@@ -26,7 +26,6 @@ const Friends = () => {
   if (isLoading) {
     return (
       <div className='bg-[#e4f0f0] dark:bg-[#2b2b2b] min-h-screen'>
-        <Header />
         <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
           <div className='text-center py-8 text-gray-600'>
             Loading friends...
@@ -39,7 +38,6 @@ const Friends = () => {
   if (error) {
     return (
       <div className='bg-[#e4f0f0] dark:bg-[#2b2b2b] min-h-screen'>
-        <Header />
         <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
           <div className='text-center py-8 text-red-600'>
             {errorMessage.includes('index') ||
@@ -61,7 +59,6 @@ const Friends = () => {
 
   return (
     <div className='bg-[#e4f0f0] dark:bg-[#2b2b2b] min-h-screen'>
-      <Header />
       <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
         <div className='mx-auto'>
           <h2 className='text-2xl font-bold text-[#8b4513] mb-8'>
