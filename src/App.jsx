@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Friends from './components/Friends';
+import Friends from './components/friends/Friends';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 

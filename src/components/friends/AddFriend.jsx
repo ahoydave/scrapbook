@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '../firebase';
-import { getUserByEmail } from '../utils/userProfile';
+import { auth, db } from '../../firebase';
+import { getUserByEmail } from '../../utils/userProfile';
 
 const AddFriend = ({ userId }) => {
   const [user] = useAuthState(auth);

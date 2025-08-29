@@ -1,6 +1,6 @@
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 const FriendsList = ({ userId }) => {
   // Get friendships where user is either user1 or user2

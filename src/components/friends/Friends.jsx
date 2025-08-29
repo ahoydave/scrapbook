@@ -1,6 +1,5 @@
-import Header from './header/Header';
-import formatDate from '../functions/formatDate';
-import useFriends from '../hooks/useFriends';
+import formatDate from '../../functions/formatDate';
+import useFriends from '../../hooks/useFriends';
 import AddFriend from './AddFriend';
 
 const Friends = () => {
