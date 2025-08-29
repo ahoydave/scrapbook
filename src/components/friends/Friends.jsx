@@ -1,5 +1,5 @@
 import formatDate from '../../functions/formatDate';
-import useFriends from '../../hooks/useFriends';
+import useFriendsManagement from '../../hooks/useFriendsManagement';
 import AddFriend from './AddFriend';
 
 const Friends = () => {
@@ -16,7 +16,7 @@ const Friends = () => {
       handleDeclineRequest,
       handleCancelRequest,
     },
-  } = useFriends();
+  } = useFriendsManagement();
 
   if (!user) {
     return <div>Loading...</div>;

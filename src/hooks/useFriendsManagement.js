@@ -14,7 +14,7 @@ import {
 import { auth, db } from '../firebase';
 import { useState } from 'react';
 
-const useFriends = () => {
+const useFriendsManagement = () => {
   const [user] = useAuthState(auth);
   const [processingActions, setProcessingActions] = useState({});
 
@@ -296,4 +296,4 @@ const useFriends = () => {
   };
 };
 
-export default useFriends;
+export default useFriendsManagement;
