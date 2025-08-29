@@ -58,22 +58,8 @@ const Friends = () => {
 
   const { allItems } = data;
 
-  // Add dummy incoming request for testing/preview
-  const dummyIncomingRequest = {
-    id: 'dummy-incoming-123',
-    type: 'incoming',
-    fromUserId: 'dummy-user-456',
-    fromUserEmail: 'john.doe@example.com',
-    fromUserName: 'John Doe',
-    fromUserPhotoURL: null, // Set to null to show the fallback avatar
-    createdAt: new Date()
-  };
-
-  // Add the dummy data to allItems and sort by priority
-  const itemsWithDummy = [...allItems, dummyIncomingRequest];
-  
   // Sort items: incoming first, then outgoing, then friends
-  const sortedItems = itemsWithDummy.sort((a, b) => {
+  const sortedItems = allItems.sort((a, b) => {
     const priority = { incoming: 1, outgoing: 2, friend: 3 };
     return priority[a.type] - priority[b.type];
   });
