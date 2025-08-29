@@ -125,6 +125,41 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Real-time Updates**: Live reaction changes across all users
 *   **Graceful Errors**: Reactions fail silently without breaking UI
 
+### ✅ 12. Tailwind CSS v4 Integration & Theme System
+*   **Tailwind v4 Setup**: Added Tailwind CSS v4 with all required dependencies ([Installation Guide](https://tailwindcss.com/docs/installation/using-vite))
+*   **Theme Colors**: Implemented comprehensive theme color system in `index.css` with scrapbook-specific branding
+*   **Color Palette**: Using refined color scheme ([Color Guide](https://coolors.co/ddc4dd-dccfec-a997df-4f517d-1a3a3a)) - still needs refinement
+*   **Theme Integration**: All converted components now reference theme colors from `index.css` instead of inline values
+*   **Responsive Design**: Corrected responsiveness for all components on small screens
+*   **Dark Mode Foundation**: Background colors respond to browser appearance mode, with plans for full dark mode support
+*   **Light/Dark Toggle**: Planned addition of manual light/dark mode toggle switch
+
+### ✅ 13. Component Architecture & UI Improvements
+*   **Catalyst UI Components**: Added generic components from [Tailwind Catalyst UI-kit](https://tailwindcss.com/plus/ui-kit) - needs refinement and usage consideration
+*   **Folder Structure**: Reorganized components into logical sub-folders (`/header`, `/friends`, `/common`)
+*   **Code Organization**: Created dedicated folders for hooks and utility functions
+*   **Component Refactoring**: Extracted reusable components (UserAvatar, friend request cards)
+
+### ✅ 14. Header & Navigation Migration
+*   **Header Components**: Fully migrated Header and all associated components to Tailwind CSS
+*   **Navigation Styling**: Updated NavBar, UserMenu, and MobileMenu with theme colors
+*   **Responsive Design**: Improved mobile navigation and dropdown behaviors
+*   **Color Consistency**: Replaced all inline colors with theme variables
+
+### ✅ 15. Friends System Tailwind Migration
+*   **Friends Page**: Complete migration of Friends page and all components to Tailwind CSS
+*   **Component Extraction**: Refactored into separate FriendCard, IncomingRequestCard, and OutgoingRequestCard components
+*   **UserAvatar Component**: Created reusable avatar component with image fallbacks and theme integration
+*   **AddFriend Component**: Updated with responsive design and theme colors
+*   **Data Sorting**: Improved UX by reordering display (incoming requests → outgoing requests → friends)
+*   **Count Logic**: Enhanced friend/pending count to include both incoming and outgoing requests
+
+### ⚠️ 16. App-wide Tailwind Migration (In Progress)
+*   **Goal**: Eventually refactor entire app to use only Tailwind CSS and eliminate `App.css` dependency
+*   **Status**: Header and Friends sections complete, Posts system still uses `App.css`
+*   **Theme Consistency**: All migrated components use centralized theme colors
+*   **Dark Mode**: Foundation in place, full implementation pending
+
 ### ⚠️ 12. @Mentions System (In Progress)
 *   **Friend Selection**: Type @ to see dropdown with friend options
 *   **Clean Display**: Shows @FriendName in inputs instead of technical format
@@ -157,6 +192,9 @@ This document outlines the project goals, technology stack, and the progress mad
 
 **🟡 KNOWN ISSUES**:
 - **@Mentions**: Friend mention system implemented but not working correctly yet
+- **Tailwind Migration**: Posts, comments, and reactions systems still use `App.css` - migration pending
+- **Theme Refinement**: Color palette needs further refinement based on design guide
+- **Dark Mode**: Full dark mode implementation incomplete, currently only responds to browser preference
 
 **🟡 MINOR CONSIDERATIONS**:
 - Using permissive Firestore rules (allow all authenticated users for debugging)
@@ -171,6 +209,9 @@ This document outlines the project goals, technology stack, and the progress mad
 *   **Background Highlighting**: Fix post/comment background highlighting when user is mentioned
 
 ### Short Term (Enhanced Features)
+*   **Complete Tailwind Migration**: Migrate Posts, Comments, and Reactions systems from `App.css` to Tailwind
+*   **Theme Refinement**: Polish color palette and ensure consistent theme usage across all components
+*   **Dark Mode Toggle**: Implement manual light/dark mode toggle switch
 *   **Comment Editing**: Allow users to edit their own comments
 *   **User Profile Pages**: Dedicated profile pages for each friend
 *   **Post Privacy Settings**: Allow users to set post visibility levels
