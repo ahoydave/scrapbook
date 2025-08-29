@@ -1,73 +1,6 @@
-/* Global Styles */
-body {
-  background-color: #f7f3e9;
-  color: #3d2914;
-}
-
 #root {
   min-height: 100vh;
-}
-
-/* Header Styles */
-.header {
-  background-color: #8b4513;
-  color: #f7f3e9;
-  padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.header-title {
-  text-decoration: none;
-  color: inherit;
-}
-
-.header-title:hover {
-  text-decoration: none;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.header-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-link {
-  color: #f7f3e9;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-  position: relative;
-}
-
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  text-decoration: none;
-}
-
-.nav-link.active {
-  background-color: #d2691e;
+  background-color: #e4f0f0;
 }
 
 .notification-badge {
@@ -86,7 +19,7 @@ body {
   font-weight: bold;
   min-width: 20px;
   padding: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .user-info {
@@ -140,18 +73,12 @@ body {
   background-color: #cd853f;
 }
 
-/* Main Content */
 .main-content {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-
-
-
-
-/* Auth Forms */
 .auth-container {
   min-height: 100vh;
   display: flex;
@@ -166,7 +93,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
@@ -257,7 +184,7 @@ body {
 .post-creator {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -327,7 +254,8 @@ body {
   overflow: hidden;
 }
 
-.preview-image, .preview-video {
+.preview-image,
+.preview-video {
   width: 100%;
   max-height: 400px;
   object-fit: contain;
@@ -430,8 +358,12 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .post-list-error {
@@ -457,14 +389,14 @@ body {
   color: #666;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Individual Post */
 .post {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -601,7 +533,8 @@ body {
   justify-content: flex-end;
 }
 
-.post-save-btn, .post-cancel-btn {
+.post-save-btn,
+.post-cancel-btn {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
@@ -656,7 +589,8 @@ body {
   width: 100%;
 }
 
-.post-image, .post-video {
+.post-image,
+.post-video {
   width: 100%;
   height: auto;
   display: block;
@@ -685,14 +619,16 @@ body {
   gap: 0.75rem;
 }
 
-.comment-form-avatar, .comment-avatar {
+.comment-form-avatar,
+.comment-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.comment-form-avatar-placeholder, .comment-avatar-placeholder {
+.comment-form-avatar-placeholder,
+.comment-avatar-placeholder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -877,243 +813,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Friends Page */
-.friends-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.friends-container h2 {
-  color: #8b4513;
-  margin-bottom: 2rem;
-}
-
-/* Add Friend */
-.add-friend {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 1.5rem;
-}
-
-.add-friend h3 {
-  color: #8b4513;
-  margin-bottom: 1rem;
-}
-
-.add-friend-form {
-  margin-bottom: 1rem;
-}
-
-.form-group {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.email-input {
-  flex: 1;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.email-input:focus {
-  outline: none;
-  border-color: #8b4513;
-  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
-}
-
-.send-request-btn {
-  background-color: #8b4513;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.send-request-btn:hover:not(:disabled) {
-  background-color: #a0522d;
-}
-
-.send-request-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.message {
-  padding: 1rem;
-  border-radius: 4px;
-  font-weight: 500;
-}
-
-.message.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.message.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-/* Friend Requests */
-.friend-requests {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.requests-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.requests-section h3 {
-  color: #8b4513;
-  margin-bottom: 1rem;
-}
-
-.no-requests {
-  color: #666;
-  font-style: italic;
-  text-align: center;
-  padding: 2rem;
-}
-
-.requests-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Request styling variations */
-.friend-card.incoming-request {
-  border-left: 3px solid #28a745;
-  background-color: #f8fff8;
-}
-
-.friend-card.outgoing-request {
-  border-left: 3px solid #ffc107;
-  background-color: #fffef8;
-}
-
-.friend-card.incoming-request .friend-actions {
-  gap: 0.5rem;
-}
-
-.friend-card.outgoing-request .friend-actions {
-  gap: 0.5rem;
-}
-
-.friend-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.friend-avatar-placeholder {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #d2691e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.friend-info {
-  flex: 1;
-}
-
-.friend-name {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.25rem;
-}
-
-.friend-email {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-.friend-since {
-  color: #999;
-  font-size: 0.8rem;
-}
-
-.accept-btn {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.accept-btn:hover {
-  background-color: #218838;
-}
-
-.decline-btn {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.decline-btn:hover {
-  background-color: #c82333;
-}
-
-.cancel-btn {
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.cancel-btn:hover {
-  background-color: #5a6268;
-}
-
-/* Reactions */
-.reactions-container {
-  margin-top: 0.25rem;
-}
-
-.reactions-display {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
 /* Post reactions - normal size, aligned with post content */
 .post .reactions-container {
   padding-left: 1.5rem;
@@ -1234,7 +933,7 @@ body {
   border: 1px solid #dee2e6;
   border-radius: 8px;
   padding: 0.4rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 0.2rem;
@@ -1269,7 +968,8 @@ body {
   background: #f8f9fa;
 }
 
-.reactions-loading, .reactions-error {
+.reactions-loading,
+.reactions-error {
   font-size: 0.8rem;
   color: #666;
   font-style: italic;
@@ -1287,7 +987,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .friends-list h3 {
@@ -1350,7 +1050,8 @@ body {
   background-color: #c82333;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 2rem;
   color: #666;
@@ -1395,7 +1096,7 @@ body {
   background: white;
   border: 1px solid #dee2e6;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
@@ -1475,8 +1176,9 @@ body {
     margin: 1rem auto;
     padding: 0 0.5rem;
   }
-  
-  .post-creator, .post {
+
+  .post-creator,
+  .post {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     border-radius: 0;

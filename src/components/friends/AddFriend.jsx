@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '../firebase';
-import { getUserByEmail } from '../utils/userProfile';
+import { auth, db } from '../../firebase';
+import { getUserByEmail } from '../../utils/userProfile';
 
 const AddFriend = ({ userId }) => {
   const [user] = useAuthState(auth);
@@ -125,23 +125,23 @@ const AddFriend = ({ userId }) => {
   };
 
   return (
-    <div className="add-friend">
-      <h3>Add a Friend</h3>
+    <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+      <h3 className="text-xl font-semibold text-scrapbook-primary-dark mb-4">Add a Friend</h3>
       
-      <form onSubmit={handleSendRequest} className="add-friend-form">
-        <div className="form-group">
+      <form onSubmit={handleSendRequest} className="mb-4">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
-            className="email-input"
+            className="flex-1 px-3 py-2 border border-scrapbook-gray-300 rounded-md focus:outline-none focus:border-scrapbook-primary-dark focus:ring-2 focus:ring-opacity-20 "
             disabled={loading}
           />
           <button 
             type="submit" 
             disabled={loading || !email.trim()}
-            className="send-request-btn"
+            className="bg-scrapbook-primary-dark hover:opacity-80 hover:cursor-pointer disabled:bg-scrapbook-gray-400 text-scrapbook-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed whitespace-nowrap"
           >
             {loading ? 'Sending...' : 'Send Friend Request'}
           </button>
@@ -149,7 +149,11 @@ const AddFriend = ({ userId }) => {
       </form>
 
       {message && (
-        <div className={`message ${messageType}`}>
+        <div className={`p-4 rounded-md ${
+          messageType === 'success' 
+            ? 'bg-scrapbook-success-light text-scrapbook-success-dark border border-scrapbook-success' 
+            : 'bg-scrapbook-error-light text-scrapbook-error-dark border border-scrapbook-error'
+        }`}>
           {message}
         </div>
       )}
