@@ -1,14 +1,19 @@
 import formatDate from '../../functions/formatDate';
+import UserAvatar from '../common/UserAvatar';
 
 const OutgoingRequestCard = ({ item, isProcessing, onCancelRequest }) => {
   return (
     <div
-      className='border border-scrapbook-gray-200 border-l-[3px] border-l-scrapbook-warning rounded-lg p-4 mb-4 bg-scrapbook-warning-light flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4'
+      className='border border-scrapbook-gray-200 border-l-[3px] border-l-scrapbook-primary-dark rounded-lg p-4 mb-4 bg-scrapbook-primary-light flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4'
     >
       <div className='flex items-center gap-4 flex-1'>
-        <div className='w-[50px] h-[50px] rounded-full bg-scrapbook-secondary flex items-center justify-center font-bold text-white text-xl'>
-          {item.toUserEmail?.charAt(0)?.toUpperCase() || 'U'}
-        </div>
+        <UserAvatar
+          src={null}
+          alt={`${item.toUserEmail}'s profile`}
+          fallbackText={item.toUserEmail}
+          size={50}
+          bgColor="bg-scrapbook-primary-dark"
+        />
         <div className='flex-1'>
           <div className='font-semibold text-scrapbook-gray-800'>
             Request sent

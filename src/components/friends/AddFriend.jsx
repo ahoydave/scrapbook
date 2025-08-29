@@ -126,7 +126,7 @@ const AddFriend = ({ userId }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-      <h3 className="text-xl font-semibold text-scrapbook-primary mb-4">Add a Friend</h3>
+      <h3 className="text-xl font-semibold text-scrapbook-primary-dark mb-4">Add a Friend</h3>
       
       <form onSubmit={handleSendRequest} className="mb-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -135,13 +135,13 @@ const AddFriend = ({ userId }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
-            className="flex-1 px-3 py-2 border border-scrapbook-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-scrapbook-primary focus:ring-opacity-20 focus:border-scrapbook-primary"
+            className="flex-1 px-3 py-2 border border-scrapbook-gray-300 rounded-md focus:outline-none focus:border-scrapbook-primary-dark focus:ring-2 focus:ring-opacity-20 "
             disabled={loading}
           />
           <button 
             type="submit" 
             disabled={loading || !email.trim()}
-            className="bg-scrapbook-primary hover:bg-scrapbook-primary-light disabled:bg-scrapbook-gray-400 text-scrapbook-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed whitespace-nowrap"
+            className="bg-scrapbook-primary-dark hover:opacity-80 hover:cursor-pointer disabled:bg-scrapbook-gray-400 text-scrapbook-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed whitespace-nowrap"
           >
             {loading ? 'Sending...' : 'Send Friend Request'}
           </button>

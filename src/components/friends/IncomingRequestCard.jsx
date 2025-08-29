@@ -1,4 +1,5 @@
 import formatDate from '../../functions/formatDate';
+import UserAvatar from '../common/UserAvatar';
 
 const IncomingRequestCard = ({ item, isProcessing, onAcceptRequest, onDeclineRequest }) => {
   return (
@@ -6,25 +7,13 @@ const IncomingRequestCard = ({ item, isProcessing, onAcceptRequest, onDeclineReq
       className='border border-scrapbook-gray-200 border-l-[3px] border-l-scrapbook-success rounded-lg p-4 mb-4 bg-scrapbook-success-light flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4'
     >
       <div className='flex items-center gap-4 flex-1'>
-        {item.fromUserPhotoURL ? (
-          <img
-            src={item.fromUserPhotoURL}
-            alt={`${item.fromUserName}'s profile`}
-            className='w-[50px] h-[50px] rounded-full object-cover'
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
-            }}
-          />
-        ) : null}
-        <div
-          className='w-[50px] h-[50px] rounded-full bg-scrapbook-secondary flex items-center justify-center font-bold text-white text-xl'
-          style={{
-            display: item.fromUserPhotoURL ? 'none' : 'flex',
-          }}
-        >
-          {item.fromUserName?.charAt(0)?.toUpperCase() || 'U'}
-        </div>
+        <UserAvatar
+          src={item.fromUserPhotoURL}
+          alt={`${item.fromUserName}'s profile`}
+          fallbackText={item.fromUserName}
+          size={50}
+          // bgColor="bg-scrapbook-secondary"
+        />
         <div className='flex-1'>
           <div className='font-semibold text-scrapbook-gray-800'>
             Incoming request
