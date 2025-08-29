@@ -38,8 +38,8 @@ const UserMenu = ({ userDisplayInfo, handleLogout }) => {
             </div>
           )}
         </MenuButton>
-        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700">
-          <div className="px-4 py-2 text-sm text-gray-700 dark:text-white">
+        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-scrapbook-white py-1 shadow-lg ring-1 ring-scrapbook-black ring-opacity-5 focus:outline-none dark:bg-scrapbook-gray-700">
+          <div className="px-4 py-2 text-sm text-scrapbook-gray-700 dark:text-scrapbook-white">
             <div className="font-medium">{userDisplayInfo.displayName}</div>
           </div>
           <MenuItem>
@@ -47,8 +47,8 @@ const UserMenu = ({ userDisplayInfo, handleLogout }) => {
               <button
                 onClick={handleLogout}
                 className={classNames(
-                  active ? 'bg-gray-100 dark:bg-gray-600' : '',
-                  'block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-[#a9a9a9] cursor-pointer'
+                  active ? 'bg-scrapbook-gray-100 dark:bg-scrapbook-gray-600' : '',
+                  'block w-full text-left px-4 py-2 text-sm text-scrapbook-gray-700 dark:text-scrapbook-text-light cursor-pointer'
                 )}
               >
                 Logout

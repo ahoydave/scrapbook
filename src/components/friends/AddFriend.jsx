@@ -126,22 +126,22 @@ const AddFriend = ({ userId }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-      <h3 className="text-xl font-semibold text-[#8b4513] mb-4">Add a Friend</h3>
+      <h3 className="text-xl font-semibold text-scrapbook-primary mb-4">Add a Friend</h3>
       
       <form onSubmit={handleSendRequest} className="mb-4">
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email address"
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8b4513] focus:ring-opacity-20 focus:border-[#8b4513]"
+            className="flex-1 px-3 py-2 border border-scrapbook-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-scrapbook-primary focus:ring-opacity-20 focus:border-scrapbook-primary"
             disabled={loading}
           />
           <button 
             type="submit" 
             disabled={loading || !email.trim()}
-            className="bg-[#8b4513] hover:bg-[#a0522d] disabled:bg-gray-400 text-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed"
+            className="bg-scrapbook-primary hover:bg-scrapbook-primary-light disabled:bg-scrapbook-gray-400 text-scrapbook-white rounded-md px-6 py-2 font-semibold text-base transition-colors disabled:cursor-not-allowed whitespace-nowrap"
           >
             {loading ? 'Sending...' : 'Send Friend Request'}
           </button>
@@ -151,8 +151,8 @@ const AddFriend = ({ userId }) => {
       {message && (
         <div className={`p-4 rounded-md ${
           messageType === 'success' 
-            ? 'bg-green-100 text-green-800 border border-green-200' 
-            : 'bg-red-100 text-red-800 border border-red-200'
+            ? 'bg-scrapbook-success-light text-scrapbook-success-dark border border-scrapbook-success' 
+            : 'bg-scrapbook-error-light text-scrapbook-error-dark border border-scrapbook-error'
         }`}>
           {message}
         </div>

@@ -2,4 +2,67 @@
 @theme {
   --font-sans: InterVariable, sans-serif;
   --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+
+  /* Scrapbook Brand Colors */
+  --color-scrapbook-primary: #8b4513;
+  --color-scrapbook-primary-light: #a0522d;
+  --color-scrapbook-primary-dark: #704214;
+  --color-scrapbook-secondary: #d2691e;
+
+  /* Background Colors */
+  --color-scrapbook-bg-main: #e4f0f0;
+  --color-scrapbook-bg-dark: #2b2b2b;
+  --color-scrapbook-bg-auth: #f7f3e9;
+
+  /* Status Colors */
+  --color-scrapbook-success: #28a745;
+  --color-scrapbook-success-light: #d4edda;
+  --color-scrapbook-success-dark: #155724;
+  --color-scrapbook-error: #dc3545;
+  --color-scrapbook-error-light: #f8d7da;
+  --color-scrapbook-error-dark: #721c24;
+  --color-scrapbook-warning: #ffc107;
+  --color-scrapbook-warning-light: #fff3cd;
+  --color-scrapbook-warning-dark: #856404;
+
+  /* UI Colors */
+  --color-scrapbook-card: #fafafa;
+  --color-scrapbook-border: #eee;
+  --color-scrapbook-border-light: #e5e7eb;
+  --color-scrapbook-text-muted: #666;
+  --color-scrapbook-text-light: #a9a9a9;
+  --color-scrapbook-text-lighter: #e4e4e4;
+  --color-scrapbook-text-lightest: #e2e2e2;
+  --color-scrapbook-text-dark: #374151;
+  --color-scrapbook-text-darker: #1f2937;
+
+  /* Neutral Colors */
+  --color-scrapbook-gray-50: #f9fafb;
+  --color-scrapbook-gray-100: #f3f4f6;
+  --color-scrapbook-gray-200: #e5e7eb;
+  --color-scrapbook-gray-300: #d1d5db;
+  --color-scrapbook-gray-400: #9ca3af;
+  --color-scrapbook-gray-500: #6b7280;
+  --color-scrapbook-gray-600: #4b5563;
+  --color-scrapbook-gray-700: #374151;
+  --color-scrapbook-gray-800: #1f2937;
+  --color-scrapbook-gray-900: #111827;
+
+  /* Accent Colors */
+  --color-scrapbook-indigo: #4f46e5;
+  --color-scrapbook-white: #ffffff;
+  --color-scrapbook-black: #000000;
+
+  /* Zinc-equivalent colors for UI components */
+  --color-scrapbook-zinc-50: #fafafa;
+  --color-scrapbook-zinc-100: #f4f4f5;
+  --color-scrapbook-zinc-200: #e4e4e7;
+  --color-scrapbook-zinc-300: #d4d4d8;
+  --color-scrapbook-zinc-400: #a1a1aa;
+  --color-scrapbook-zinc-500: #71717a;
+  --color-scrapbook-zinc-600: #52525b;
+  --color-scrapbook-zinc-700: #3f3f46;
+  --color-scrapbook-zinc-800: #27272a;
+  --color-scrapbook-zinc-900: #18181b;
+  --color-scrapbook-zinc-950: #09090b;
 }

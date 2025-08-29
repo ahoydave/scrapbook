@@ -27,13 +27,13 @@ const Header = () => {
 
   if (loading) {
     return (
-      <div className="min-h-16 border-b border-gray-200 bg-white dark:bg-[#0f0f0f]">
+      <div className="min-h-16 border-b border-scrapbook-gray-200 bg-scrapbook-white dark:bg-[#0f0f0f]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Heading level={1} className="text-2xl font-bold text-indigo-600">Scrapbook</Heading>
             </div>
-            <div className="text-gray-500 dark:text-[#d9d9d9]">Loading...</div>
+            <div className="text-scrapbook-gray-500 dark:text-[#d9d9d9]">Loading...</div>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const Header = () => {
   }
 
   return (
-    <Disclosure as="nav" className="border-b border-gray-200 bg-white dark:bg-[#0f0f0f] dark:border-[#0f0f0f]">
+    <Disclosure as="nav" className="border-b border-scrapbook-gray-200 bg-scrapbook-white dark:bg-[#0f0f0f] dark:border-[#0f0f0f]">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -59,7 +59,7 @@ const Header = () => {
                 <>
                   <UserMenu userDisplayInfo={userDisplayInfo} handleLogout={handleLogout} />
                   <div className="-mr-2 flex items-center sm:hidden">
-                    <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-scrapbook-gray-400 hover:bg-scrapbook-gray-100 hover:text-scrapbook-gray-500 focus:outline-none focus:ring-2 focus:ring-scrapbook-indigo focus:ring-offset-2">
                       <span className="absolute -inset-0.5" />
                       <span className="sr-only">Open main menu</span>
                       {open ? (

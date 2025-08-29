@@ -13,14 +13,14 @@ const NavBar = ({ navigation }) => {
           to={item.href}
           className={classNames(
             item.current
-              ? 'border-indigo-600 text-gray-900'
-              : 'border-transparent text-gray-500 dark:text-[#a9a9a9] hover:border-gray-300 hover:text-gray-700 dark:hover:text-[#e2e2e2]',
+              ? 'border-scrapbook-indigo text-scrapbook-gray-900'
+              : 'border-transparent text-scrapbook-gray-500 dark:text-scrapbook-text-light hover:border-scrapbook-gray-300 hover:text-scrapbook-gray-700 dark:hover:text-scrapbook-text-lightest',
             'relative inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
           )}
         >
           {item.name}
           {item.badge && (
-            <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+            <span className="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-scrapbook-white transform translate-x-1/2 -translate-y-1/2 bg-scrapbook-error rounded-full">
               {item.badge}
             </span>
           )}

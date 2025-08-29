@@ -20,13 +20,13 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
               className={classNames(
                 item.current
                   ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                  : 'border-transparent text-gray-600 dark:text-[#a9a9a9] hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800',
+                  : 'border-transparent text-scrapbook-gray-600 dark:text-scrapbook-text-light hover:border-scrapbook-gray-300 hover:bg-scrapbook-gray-50 hover:text-scrapbook-gray-800',
                 'relative block border-l-4 py-2 pl-3 pr-4 text-base font-medium'
               )}
             >
               {item.name}
               {item.badge && (
-                <span className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold text-white bg-red-500 rounded-full">
+                <span className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold text-scrapbook-white bg-scrapbook-error rounded-full">
                   {item.badge}
                 </span>
               )}
@@ -34,7 +34,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
           </DisclosureButton>
         ))}
       </div>
-      <div className="border-t border-gray-200 pb-3 pt-4">
+      <div className="border-t border-scrapbook-gray-200 pb-3 pt-4">
         <div className="flex items-center px-4">
           <div className="shrink-0">
             {userDisplayInfo.photoURL ? (
@@ -65,7 +65,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
             )}
           </div>
           <div className="ml-3">
-            <div className="text-base font-medium text-gray-800 dark:text-[#e4e4e4]">
+            <div className="text-base font-medium text-scrapbook-gray-800 dark:text-scrapbook-text-lighter">
               {userDisplayInfo.displayName}
             </div>
           </div>
@@ -74,7 +74,7 @@ const MobileMenu = ({ navigation, userDisplayInfo, handleLogout }) => {
           <DisclosureButton
             as="button"
             onClick={handleLogout}
-            className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 dark:text-[#a9a9a9]"
+            className="block w-full text-left px-4 py-2 text-base font-medium text-scrapbook-gray-500 dark:text-scrapbook-text-light"
           >
             Logout
           </DisclosureButton>
