@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div className="bg-scrapbook-bg-main dark:bg-scrapbook-bg-dark min-h-screen">
-       <main className="max-w-3xl mx-auto lg:px-8 py-6 flex flex-col">
+       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
         <PostCreator />
         <PostList />
       </main>
