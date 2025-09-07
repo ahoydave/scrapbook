@@ -813,6 +813,14 @@
   font-size: 0.9rem;
 }
 
+/* Base reactions display - horizontal layout */
+.reactions-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 /* Post reactions - normal size, aligned with post content */
 .post .reactions-container {
   padding-left: 1.5rem;
