@@ -1168,6 +1168,19 @@
   color: #f57c00;
 }
 
+/* Link styling in posts and comments */
+.post-link {
+  color: #1976d2;
+  text-decoration: underline;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+
+.post-link:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
 /* Post/Comment background highlighting when user is mentioned */
 .post.mentioned {
   background-color: #fff8f0;
